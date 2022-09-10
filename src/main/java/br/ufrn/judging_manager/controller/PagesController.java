@@ -1,4 +1,4 @@
-package br.ufrn.judging_manager.controllers;
+package br.ufrn.judging_manager.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

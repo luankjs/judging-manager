@@ -36,14 +36,16 @@ public class JudgesController {
     @RequestParam(required = false) String name, 
     @RequestParam(required = false) String q
   ){
-    if (name == null && q == null) {
+    if (name == null) {
       return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAll(pageable));
-    }
-    if (q == null) {
-      return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(name, pageable));
     } else {
-      return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(q, pageable));
+      return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(name, pageable));
     }
+    // if (q == null) {
+    //   return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(name, pageable));
+    // } else {
+    //   return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(q, pageable));
+    // }
   }
 
   @PostMapping

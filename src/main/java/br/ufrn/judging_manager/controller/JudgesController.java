@@ -31,11 +31,18 @@ public class JudgesController {
   private JudgeRepository judgeRepository;  
   
   @GetMapping
-  public ResponseEntity<Page<Judge>> index(Pageable pageable, @RequestParam(required = false) String name){
-    if (name == null) {
+  public ResponseEntity<Page<Judge>> index(
+    Pageable pageable, 
+    @RequestParam(required = false) String name, 
+    @RequestParam(required = false) String q
+  ){
+    if (name == null && q == null) {
       return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAll(pageable));
-    } else {
+    }
+    if (q == null) {
       return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(name, pageable));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(judgeRepository.findAllByNameContaining(q, pageable));
     }
   }
 

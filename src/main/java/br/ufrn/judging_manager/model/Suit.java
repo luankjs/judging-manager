@@ -1,7 +1,7 @@
 package br.ufrn.judging_manager.model;
 
-import java.sql.Array;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
@@ -18,7 +19,6 @@ import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.vladmihalcea.hibernate.type.array.ListArrayType;
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
 
 import lombok.Data;
@@ -50,4 +50,7 @@ public class Suit {
   @JoinColumn(name = "judge_id", nullable = false)
   @JsonIgnore
   private Judge judge;
+
+  @OneToMany(mappedBy = "suit")
+  Set<JudgingSuit> judgings;
 }

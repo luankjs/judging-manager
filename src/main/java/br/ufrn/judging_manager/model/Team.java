@@ -28,8 +28,8 @@ public class Team {
   @Column(nullable = false)
   private String initials;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "leader_id", nullable = false)
-  @JsonIgnore
-  private Judge judge;
+  // @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  // @JoinColumn(name = "leader_id", nullable = false)
+  // @JsonIgnore
+  // private Judge judge;
 }
